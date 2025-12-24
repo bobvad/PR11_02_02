@@ -1,0 +1,108 @@
+﻿<Window x:Class="GigaChatWpf_02_02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Генератор изображений" 
+        Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="LightBlue" Padding="10">
+            <TextBlock Text="Генератор изображений GigaChat" 
+                      FontSize="20" FontWeight="Bold"
+                      HorizontalAlignment="Center"/>
+        </Border>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="Описание" Margin="0,0,0,10">
+                <TextBox x:Name="PromptTextBox" 
+                        TextWrapping="Wrap" 
+                        Height="80"
+                        VerticalScrollBarVisibility="Auto"/>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="Стиль" Margin="0,0,0,10">
+                <ComboBox x:Name="StyleComboBox" SelectedIndex="0">
+                    <ComboBoxItem>Реализм</ComboBoxItem>
+                    <ComboBoxItem>Импрессионизм</ComboBoxItem>
+                    <ComboBoxItem>Сюрреализм</ComboBoxItem>
+                    <ComboBoxItem>Абстракция</ComboBoxItem>
+                    <ComboBoxItem>Мультяшный</ComboBoxItem>
+                    <ComboBoxItem>Аниме</ComboBoxItem>
+                </ComboBox>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="Цвета" Margin="0,0,0,10">
+                <ComboBox x:Name="ColorComboBox" SelectedIndex="0">
+                    <ComboBoxItem>Яркие цвета</ComboBoxItem>
+                    <ComboBoxItem>Пастельные</ComboBoxItem>
+                    <ComboBoxItem>Черно-белое</ComboBoxItem>
+                    <ComboBoxItem>Теплые</ComboBoxItem>
+                    <ComboBoxItem>Холодные</ComboBoxItem>
+                </ComboBox>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="Размер" Margin="0,0,0,10">
+                <StackPanel>
+                    <RadioButton x:Name="Ratio16_9" Content="16:9" GroupName="Size" IsChecked="True"/>
+                    <RadioButton x:Name="Ratio4_3" Content="4:3" GroupName="Size"/>
+                    <RadioButton x:Name="Ratio1_1" Content="1:1" GroupName="Size"/>
+                    <RadioButton x:Name="Ratio9_16" Content="9:16" GroupName="Size"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="Дополнительно">
+                <StackPanel>
+                    <CheckBox x:Name="SetWallpaperCheckBox" Content="Установить как обои" IsChecked="True"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#EEE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="White" Margin="10" Padding="10" BorderBrush="Gray" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="Предпросмотр:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock x:Name="PreviewTextBlock" Width="200" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                <TextBlock x:Name="StatusTextBlock" Text="Готово"/>
+                <ProgressBar x:Name="ProgressBar" Height="10" Value="0" Margin="0,5,0,0"/>
+            </StackPanel>
+
+            <Button x:Name="HolidayButton" Grid.Column="2" Content="Праздник" 
+                    Click="HolidayButton_Click" Margin="5" Padding="10,5" 
+                    Background="Orange" Foreground="White" FontWeight="Bold"
+                    ToolTip="Создать тематические обои для сегодняшнего праздника"/>
+
+            <Button x:Name="GenerateButton" Grid.Column="3" Content="Создать" 
+                    Click="GenerateButton_Click" Margin="5" Padding="10,5" 
+                    Background="Green" Foreground="White" FontWeight="Bold"
+                    IsEnabled="False"/>
+
+            <Button x:Name="ClearButton" Grid.Column="4" Content="Очистить" 
+                    Click="ClearButton_Click" Margin="5" Padding="10,5"/>
+        </Grid>
+    </Grid>
+</Window>
